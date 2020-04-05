@@ -7,7 +7,7 @@ from flask import Response
 from flask import make_response
 from werkzeug.utils import secure_filename
 from utils.improve_photo import improve_photo
-from utils.search_hero import search_hero
+from utils.hero import search_hero, get_hero
 app = Flask(__name__,
             static_folder='frontend/static',
             template_folder='templates')
@@ -51,17 +51,29 @@ def search_hero_info():
         return make_response(
             Response(''), 400)
     else:
-        bio_array = data.split()
-        last_name = bio_array[0]
+        full_name = data.split()
+        last_name = full_name[0]
         try:
-            first_name = bio_array[1]
+            first_name = full_name[1]
         except:
             first_name = ''
         try:
-            middle_name = bio_array[2]
+            middle_name = full_name[2]
         except:
             middle_name = ''
 
         search_results = search_hero(last_name, first_name, middle_name)
 
         return jsonify(search_results)
+
+
+@app.route('/get_hero/')
+def get_hero_info():
+    idx = request.args.get('id', None)
+
+    if not idx:
+        return make_response(
+            Response(''), 400)
+    else:
+        hero = get_hero(idx)
+        return jsonify(hero)
