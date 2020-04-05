@@ -9,7 +9,7 @@ export default class Compare extends React.Component {
     state = {
         chosenPhoto: undefined,
         isCompared: false,
-        isReady: false,
+        isReady: null,
     };
 
     handleChoosePhoto(chosenPhoto) {
@@ -22,9 +22,9 @@ export default class Compare extends React.Component {
     }
 
     toReady = () => {
-        const id = this.state.isReady;
+        const name = this.state.isReady;
         const img = localStorage.getItem(this.state.chosenPhoto);
-        this.props.history.push(`/share/?img=${img}&id=${id}`);
+        this.props.history.push(`/share/?img=${img}&name=${name}`);
     }
 
     render() {
@@ -42,7 +42,7 @@ export default class Compare extends React.Component {
                                 className="compare-image"
                                 src={localStorage.getItem(chosenPhoto)}
                             />
-                            {this.state.isReady &&  <div style={{paddingTop: '10px'}}><Button label="Готово" onClick={this.toReady}/></div>}
+                            {this.state.isReady != null &&  <div style={{paddingTop: '10px'}}><Button label="Готово" onClick={this.toReady}/></div>}
                         </div>
                     </div>
                 </div>

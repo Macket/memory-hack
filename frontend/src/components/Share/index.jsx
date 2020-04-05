@@ -3,13 +3,17 @@ import "./styles.css"
 
 export default (props) => {
     const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');
-    const img = '//'+ location.host + urlParams.get('img');
+    const name = urlParams.get('name');
+    const title = "Это ветеран " + name + ". Я загрузил фотографию ветерана на портал \"Дорога памяти\"."
+    const img = 'https://'+ location.host + urlParams.get('img');
     const vkElement = useRef()
 
+    const okLink = 'https://connect.ok.ru/offer?url=https://' + location.host + '&title='+title+'&imageUrl='+img;
+
     useEffect(() => {
+        if(!VK) return;
         const vkButton = VK.Share.button({
-            title: "Это ветеран Иван Иванов. Я загрузил фотографию ветерана на портал \"Дорога памяти\".",
+            title: title,
             image: img,
             noparse: true,
         },{type: "button_nocount", text: "Расскажите о ветеране ВКонтакте"});
@@ -28,13 +32,15 @@ export default (props) => {
                         </div>
                         <div className="vk-content">
                             <img className="vk-hero-photo" src={img}/>
-                            <p>Это ветеран Иван Иванов. Я загрузил фотографию ветерана на портал "Дорога памяти". </p>
+                            <p>{title}</p>
                         </div>
                         <img src="/static/img/vk-buttons.png" className="vk-footer" />
                     </div>
                 </div>
                 <div className="ok">
-                    test
+                    <div className="ok-share-button">
+                        <a href={okLink} target="_blank">Расскажите о ветеране в Однокласниках</a>
+                    </div>
                 </div>
             </div>
         </div>

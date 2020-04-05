@@ -58,3 +58,18 @@
 .vk-footer {
     height: 40px;
 }
+
+
+.ok-share-button a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border: 0px;
+    background-color: #EE8208;
+    border-radius: 2px;
+    font: 400 12px / 16px Arial, Helvetica, sans-serif;
+    text-shadow: none;
+    display: block;
+    padding: 2px 5px;
+    height: 15px;
+    box-sizing: content-box;
+}

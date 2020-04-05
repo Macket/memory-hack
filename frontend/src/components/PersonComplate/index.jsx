@@ -39,7 +39,8 @@ export default ({ready}) => {
         }).then((response) => response.json()).then(data => {
             setHeroData(data);
             setIsLoading(false);
-            ready(event.id);
+            const name = data['Фамилия'] + " " + data['Имя'] + " " + data['Отчество'];
+            ready(name);
         });
     }
 
