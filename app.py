@@ -77,3 +77,8 @@ def get_hero_info():
     else:
         hero = get_hero(idx)
         return jsonify(hero)
+
+
+@app.route('/share/')
+def get_share():
+    return render_template('index.html')
