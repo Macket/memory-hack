@@ -21,7 +21,7 @@ export default (props) => {
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            href={ 'https://vk.com/share.php?url=https://partisans-memoryhack.herokuapp.com/&title=' + title + '&image=' + img }
+                            href={ vkLink }
                         >
                             <Button color="#4a76a8" label="Расскажите ВКонтакте" onClick={ () => {} } />
                         </a>
