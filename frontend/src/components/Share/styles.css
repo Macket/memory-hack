@@ -1,6 +1,6 @@
 .share {
-    height: 100%;
-    /*background-color: #3C3F41;*/
+    min-height: 100%;
+    background-color: #F0F0F0;
 }
 
 .share .title {
@@ -59,8 +59,13 @@
     height: 40px;
 }
 
+.ok-share-button {
+    text-align: center;
+    padding-bottom: 11px;
+}
 
 .ok-share-button a {
+    display: inline !important;
     color: rgb(255, 255, 255);
     text-decoration: none;
     border: 0px;
@@ -70,6 +75,47 @@
     text-shadow: none;
     display: block;
     padding: 2px 5px;
-    height: 15px;
     box-sizing: content-box;
+    margin: 0;
+}
+
+
+.ok-post {
+    background: #fff;
+    border-radius: 3px;
+    width: 400px;
+    padding: 15px 20px 10px 20px;
+}
+.ok-share-button{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+.ok-header{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.ok-header-name{
+    text-overflow: ellipsis;
+    line-height: 19px;
+    font-size: 14px;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #666;
+}
+
+.ok-header-date{
+    color: #939393;
+}
+
+.ok-hero-photo{
+    width: 100%;
+}
+.ok-content {
+}
+.ok-footer {
+    height: 34px;
 }
