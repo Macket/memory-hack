@@ -2,7 +2,6 @@
 node_modules/
 
 # production
-media/
 .idea
 .pyc
 __pycache__/
