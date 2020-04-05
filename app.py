@@ -3,8 +3,11 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import jsonify
+from flask import Response
+from flask import make_response
 from werkzeug.utils import secure_filename
 from utils.improve_photo import improve_photo
+from utils.search_hero import search_hero
 app = Flask(__name__,
             static_folder='frontend/static',
             template_folder='templates')
@@ -38,3 +41,27 @@ def upload_file():
         'initial_photo': f'/static/media/{secure_filename(f.filename)}',
         'improved_photo': f'/static/media/{secure_filename(f.filename)}'[:-4] + '_improved.jpg',
     })
+
+
+@app.route('/search_hero/')
+def search_hero_info():
+    data = request.args.get('query', None)
+
+    if not data:
+        return make_response(
+            Response(''), 400)
+    else:
+        bio_array = data.split()
+        last_name = bio_array[0]
+        try:
+            first_name = bio_array[1]
+        except:
+            first_name = ''
+        try:
+            middle_name = bio_array[2]
+        except:
+            middle_name = ''
+
+        search_results = search_hero(last_name, first_name, middle_name)
+
+        return jsonify(search_results)
