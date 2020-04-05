@@ -45,7 +45,7 @@ export default (props) => {
                             rel="noopener noreferrer"
                             href={ okLink }
                         >
-                            <Button color="#EE8208" label="Расскажите в Одноклассниках" onClick={ () => {} } />
+                            <Button color="#EE8208" label="Расскажите Одноклассникам" onClick={ () => {} } />
                         </a>
                     </div>
                     <div className="ok-post">
