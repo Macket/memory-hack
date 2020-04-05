@@ -1,33 +1,34 @@
 import React, {useEffect, useRef} from 'react';
+import Button from '../Button';
 import "./styles.css"
 
 export default (props) => {
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get('name');
-    const title = "Это ветеран " + name + ". Я загрузил фотографию ветерана на портал \"Дорога памяти\"."
+    const title = "Это ветеран " + name + ". Фотография улучшена с помощью сервиса \"Дорога памяти\".";
     const img = location.protocol + '//'+ location.host + urlParams.get('img');
-    const vkElement = useRef()
 
-    const okLink = 'https://connect.ok.ru/offer?url=https://' + location.host + '&title='+title+'&imageUrl='+img;
+    const okLink = 'https://connect.ok.ru/offer?url=https://partisans-memoryhack.herokuapp.com/&title='+ title + '&imageUrl='+img;
+    const vkLink = 'https://vk.com/share.php?url=https://partisans-memoryhack.herokuapp.com/&title=' + title + '&image=' + img;
 
-    useEffect(() => {
-        if(!VK) return;
-        const vkButton = VK.Share.button({
-            title: title,
-            image: img,
-            noparse: true,
-        },{type: "button_nocount", text: "Расскажите о ветеране ВКонтакте"});
-        vkElement.current.innerHTML = vkButton;
-    }, []);
     return (
         <div className="share">
-            <h1 className="title">Поделитесь результатом в социальных сетях</h1>
+            <h1 className="title">Поделитесь фотографией в социальных сетях</h1>
             <div className="container">
                 <div className="vk">
-                    <div className="vk-share-button"><span ref={vkElement}></span></div>
+
+                    <div style={ { textAlign: 'center', margin: '20px 0' } }>
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={ 'https://vk.com/share.php?url=https://partisans-memoryhack.herokuapp.com/&title=' + title + '&image=' + img }
+                        >
+                            <Button color="#4a76a8" label="Расскажите ВКонтакте" onClick={ () => {} } />
+                        </a>
+                    </div>
                     <div className="vk-post">
                         <div className="vk-header">
-                            <span className="vk-header-name">Ваше имя</span>
+                            <span className="vk-header-name">Василий Тёркин</span>
                             <span className="vk-header-date">05 апр 2020</span>
                         </div>
                         <div className="vk-content">
@@ -38,12 +39,18 @@ export default (props) => {
                     </div>
                 </div>
                 <div className="ok">
-                    <div className="ok-share-button">
-                        <a href={okLink} target="_blank">Расскажите о ветеране в Однокласниках</a>
+                    <div style={ { textAlign: 'center', margin: '20px 0' } }>
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={ okLink }
+                        >
+                            <Button color="#EE8208" label="Расскажите в Одноклассниках" onClick={ () => {} } />
+                        </a>
                     </div>
                     <div className="ok-post">
                         <div className="ok-header">
-                            <span className="ok-header-name">Ваше имя</span>
+                            <span className="ok-header-name">Василий Тёркин</span>
                             <span className="ok-header-date">05 апр 2020</span>
                         </div>
                         <div className="ok-content">
