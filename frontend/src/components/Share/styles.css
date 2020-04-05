@@ -1,0 +1,60 @@
+.share {
+    height: 100%;
+    /*background-color: #3C3F41;*/
+}
+
+.share .title {
+    color: black;
+    padding: 30px;
+    margin: 0;
+    text-align: center;
+}
+
+.share .container {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+
+
+.vk-post {
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #e1e4eb;
+    width: 400px;
+    padding: 15px 20px 10px 20px;
+}
+.vk-share-button{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+.vk-header{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.vk-header-name{
+    text-overflow: ellipsis;
+    line-height: 19px;
+    font-size: 14px;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #42648b;
+}
+
+.vk-header-date{
+    color: #939393;
+}
+
+.vk-hero-photo{
+    width: 100%;
+}
+.vk-content {
+    border-bottom: 1px solid #e1e4eb;
+}
+.vk-footer {
+    height: 40px;
+}

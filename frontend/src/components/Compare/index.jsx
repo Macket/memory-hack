@@ -17,8 +17,14 @@ export default class Compare extends React.Component {
         setTimeout(() => this.setState({ isCompared: true }), 700);
     }
 
-    handleReady = () => {
-        this.setState({ isReady: true });
+    handleReady = (id) => {
+        this.setState({ isReady: id });
+    }
+
+    toReady = () => {
+        const id = this.state.isReady;
+        const img = localStorage.getItem(this.state.chosenPhoto);
+        this.props.history.push(`/share/?img=${img}&id=${id}`);
     }
 
     render() {
@@ -36,7 +42,7 @@ export default class Compare extends React.Component {
                                 className="compare-image"
                                 src={localStorage.getItem(chosenPhoto)}
                             />
-                            {this.state.isReady &&  <div style={{paddingTop: '10px'}}><Button label="Готово"/></div>}
+                            {this.state.isReady &&  <div style={{paddingTop: '10px'}}><Button label="Готово" onClick={this.toReady}/></div>}
                         </div>
                     </div>
                 </div>
