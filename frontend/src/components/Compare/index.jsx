@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
-import TextField from '../TextField';
+import PersonComplate from '../PersonComplate';
 import './styles.css';
 
 
@@ -26,11 +26,12 @@ export default class Compare extends React.Component {
                     <h1 className="title">Введите фамилию, имя и отчество человека на фото</h1>
                     <div style={{color: 'white'}} className="compare-container">
                         <div className="compare-image-container">
+                            <PersonComplate/>
                             <img
                                 className="compare-image"
                                 src={localStorage.getItem(chosenPhoto)}
                             />
-                            <TextField hintText="Фамилия Имя Отчество"/>
+                            
                         </div>
                     </div>
                 </div>
@@ -43,6 +44,7 @@ export default class Compare extends React.Component {
                 <h1 className="title">Фотография была автоматически улучшена нейронной сетью. Правда, получилось лучше?</h1>
                 <div
                     className="compare-container"
+                    style={{paddingTop: '45px'}}
                 >
                     <div
                         style={ chosenPhoto === 'improvedPhoto' ? { visibility: 'hidden' } : {} }
