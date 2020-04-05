@@ -9,11 +9,16 @@ export default class Compare extends React.Component {
     state = {
         chosenPhoto: undefined,
         isCompared: false,
+        isReady: false,
     };
 
     handleChoosePhoto(chosenPhoto) {
         this.setState({ chosenPhoto });
         setTimeout(() => this.setState({ isCompared: true }), 700);
+    }
+
+    handleReady = () => {
+        this.setState({ isReady: true });
     }
 
     render() {
@@ -26,12 +31,12 @@ export default class Compare extends React.Component {
                     <h1 className="title">Введите фамилию, имя и отчество человека на фото</h1>
                     <div style={{color: 'white'}} className="compare-container">
                         <div className="compare-image-container">
-                            <PersonComplate/>
+                            <PersonComplate ready={this.handleReady}/>
                             <img
                                 className="compare-image"
                                 src={localStorage.getItem(chosenPhoto)}
                             />
-                            
+                            {this.state.isReady &&  <div style={{paddingTop: '10px'}}><Button label="Готово"/></div>}
                         </div>
                     </div>
                 </div>

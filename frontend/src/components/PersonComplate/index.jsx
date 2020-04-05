@@ -6,7 +6,7 @@ import Loader from '../Loader';
 import Button from '../Button';
 
 
-export default () => {
+export default ({ready}) => {
     const [dataSource, setDataSource] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [heroData, setHeroData] = useState(null);
@@ -39,6 +39,7 @@ export default () => {
         }).then((response) => response.json()).then(data => {
             setHeroData(data);
             setIsLoading(false);
+            ready();
         });
     }
 
@@ -53,7 +54,7 @@ export default () => {
             <div>Выбыл: {heroData['Место выбытия']}</div>
             <div>Причина выбытия: {heroData['Причина выбытия']}</div>
             <div>Дата выбытия: {heroData['Дата выбытия']} </div>
-            <div style={{paddingTop: '10px'}}><Button label="Готово"/></div>
+
         </div>)
     }
 
